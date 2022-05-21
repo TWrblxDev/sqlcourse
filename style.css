@@ -1,0 +1,155 @@
+/* --PAGE STYLING START-- */
+/* page font */
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Open+Sans&display=swapdisplay=swap');
+
+/* page color */
+body{
+  color:#d1d1e0;
+  background-color:#3d3d5c;
+}
+
+/* font for headers */
+#doc-header, .section-header, .footer{
+  font-family: 'Bree Serif', serif;
+}
+
+/* page headers' styling */
+#doc-header{
+  font-size:35px;
+  position:fixed;
+  background-color:#3d3d5c;
+}
+
+/* styled main header */
+.section-header{
+  font-size:30px;
+  font-weight:bold;
+}
+
+/* more styling & font change */
+nav>ul>li, p, .main-section>ul>li, code {
+  font-family: 'Open Sans', serif;
+}
+
+/* --PAGE STYLING END-- */
+
+
+/* --NAV STYLING START-- */
+/* styling nav scroll */
+#navbar{
+  position:fixed;
+  overflow:auto;
+  width: 20%;
+  height: 100%;
+  padding-top:40px;
+/*   border-right: 3px dotted #d1d1e0; */
+}
+
+/* styling header */
+#navbar>header{
+  text-align:center;
+/*   padding-top:25px; */
+}
+
+/* removing li bullets */
+nav>ul>li{
+  list-style: none;
+  padding: 10px;
+}
+
+/* removing hyperlink changing txt color */
+.nav-link{
+  color:#d1d1e0;
+  text-decoration: none;
+}
+
+/* color change w/mouse hover */
+nav ul li a:hover {
+  color:#9966ff;
+  font-size:22px;
+  font-weight:bold;
+}
+/* --NAV STYLING END-- */
+
+
+/* --CONTENT STYLING START-- */
+/* main content */
+#main-doc {
+  margin-left:23%;
+  padding:1px 16px;
+}
+
+/* spacing btwn sections */
+.main-section{
+  border-bottom: 1px solid;
+  padding:20px 0px 30px 0px;
+/*   padding-bottom:10px; */
+}
+
+/* give links in main doc a diff color */
+.main-section a, .footer a{
+  color:#9966ff;
+  text-decoration:none;
+}
+
+.main-section a:hover, .footer a:hover{
+  color:#c0fdff;
+  border-bottom: 1px solid #c0fdff;
+}
+
+/* code element styling */
+code{
+  display: block;
+  max-width: 90%;
+/*   text-align:center; */
+  background-color:#9966ff;
+  font-weight:bold;
+  font-size:13px;
+  border-radius:3px;
+  padding:10px;
+  margin: 2em auto 2em auto;
+}
+
+code:hover{
+  box-shadow: 0px 0px 10px 3px #c0fdff;
+}
+
+/* center img in ERD section */
+.center-img{
+  text-align:center;
+}
+
+/* links for doc ref in columns */
+.column-container{
+  column-width: 300px;
+  column-gap: 10px;
+}
+
+/* --CONTENT STYLING END-- */
+
+
+.footer{
+/*   background-color: #e0e0eb; */
+  padding:30px;
+  text-align:center;
+  margin-left:21%;
+}
+
+.footer a:hover{
+  color:#9BF6FF;
+  font-size:22px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+@media screen and (min-width:1370px){
+  #doc-header{
+  font-size:45px;
+}
+}
+
+@media screen and (max-width: 400px) {
+  #navbar {
+    float: none;
+    width: 100%;
+  }
+}

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - FCC: ResponsiveWebDesign_Build a Technical Documentation Page</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+<!-- ==================================================== -->
+<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--  <main id='main-doc'> -->
+  <section id='doc-header'>
+    <header>Everything SQL</header>
+  </section>
+  
+<nav id='navbar'>
+<!--   <header id='doc-header'>Everything SQL</header> -->
+  <ul>
+    <li><a class='nav-link' href='#introduction'>Introduction</a></li>
+    <li><a class='nav-link' href='#prerequisite'>Prerequisite</a></li>
+    <li><a class='nav-link' href='#syntax'>Syntax</a></li>
+    <li><a class='nav-link' href='#ddl_commands'>DDL Commands</a></li>
+    <li><a class='nav-link' href='#select_statement'>Select Statement</a></li>
+    <li><a class='nav-link' href='#where_&_having'>Where & Having</a></li>
+    <li><a class='nav-link' href='#crud_operations'>CRUD Operations</a></li>
+    <li><a class='nav-link' href='#aggregation_functions'>Aggregation Functions</a></li>
+    <li><a class='nav-link' href='#like,_in,_between,_any_&_all'>Like, In, Between, Any & All</a></li>
+    <li><a class='nav-link' href='#subqueries'>SubQueries</a></li>
+    <li><a class='nav-link' href='#joins_&_unions'>Joins & Unions</a></li>
+    <li><a class='nav-link' href='#wildcards'>Wildcards</a></li>
+    <li><a class='nav-link' href='#sqlalchemy:_here_we_go!'>SQLAlchemy: Here we go!</a></li>
+    <li><a class='nav-link' href='#erd'>ERD</a></li>
+    <li><a class='nav-link' href='#doc._references'>Doc. References</a></li>
+  </ul>
+</nav>
+
+<main id='main-doc'>
+  <section class='main-section' id='introduction'>
+    <header class='section-header'>Introduction</header>
+      <p>Welcome to Everything SQL! </p>
+      <p>SQL stands for Structured Query Language. It is a great tool for managing databases.</p>
+    <p>Below are the multitude of things that can be done with SQL: </p>
+     <ul>
+        <li>Databasing with SQL and Python with sqlite</li>
+        <li>SQLAlchemy</li>
+        <li>Also check out this SQL exercise <a class='color-the-link' href='https://mystery.knightlab.com/' target='_blank'> involving a murder mystery</a>!</li>
+      </ul>
+      <p>The goal of this documentation is to provide a one-stop-shop of everything SQL by combining information from multiple websites. Each section will cover the syntax of various commands and a brief note of their significance. For more examples with actual data, you can scroll down to the References section. That section contains the websites used to compile this documentation together.</p>
+  </section>
+  <section class='main-section' id='prerequisite'>
+    <header class='section-header'>What you should already know</header>
+      <p>Nothing! Honestly, learning SQL can begin right now. No prerequisits needed to get started. However, this guide assumes you have the following background when it comes to combining SQL with other programs such as:</p>
+      <ul>
+        <li>Some understanding of Python.</li>
+        <li>Access to SQL software like MySQL, PostgreSQL etc.</li>
+      </ul>
+  </section>
+  <section class='main-section' id='syntax'>
+    <header class='section-header'>Syntax</header>
+    <p>One important thing to remember about SQL syntax is that it's NOT case-sensitive. However, it's common practice to type the commands in all-caps so that it's easier to read the code. Another common practice that you will see is that each command starts on a new line. The code won't break if this isn't done but it's best to write the code the most common way to avoid any potential confusion. Almost every query starts with the SELECT command and an asterix(*) is used to select all columns. Also, each query ends with a semicolon(;). The semicolon signifies to SQL that the query statement is complete so that it can start running the query.</p>
+  </section>
+  <section class='main-section' id='ddl_commands'>
+    <header class='section-header'>DDL Commands</header>
+    <p>The previous section mentioned that every query starts with SELECT...except here. Below show the following examples.</p>
+    <h2>CREATE</h2>
+    <p>This includes creating tables and databases.</p>
+    <p>Follow this syntax to create a table</p>
+    <code></code>
+    <p>This includes creating tables and databases.</p>
+    <code></code>
+    <h2>ALTER TABLE</h2>
+    <p></p>
+    <code>
+       ALTER TABLE (*table_name*)
+              ADD (Columnname_1  datatype,
+              Columnname_2  datatype,
+              …
+              Columnname_n  datatype);
+    </code>
+    <h2>DROP</h2>
+    <p>The DROP command works with ALTER TABLE in order to select which column isn't needed.</p>
+    <code>ALTER TABLE (*table_name*) DROP COLUMN (*column_name*);</code>
+    <h2>TRUNCATE</h2>
+    <code></code>
+    <h2>COMMENT</h2>
+    <code></code>
+  </section>
+  <section class='main-section' id='select_statement'>
+    <header class='section-header'>Select Statement</header>
+    <p>As mentioned in the Syntax section, the SELECT command always starts the query. Meaning that all of the syntaxes shown in this documentation will have SELECT. Here's a quick example...</p>
+    <code>SELECT * FROM (*table-name*);</code>
+    <p>Or a certain amount of columns can be selected like this...</p>
+    <code>SELECT (column1, column2...) FROM (*table-name*);</code>
+    <p>One or more columns can be selected from one or more tables. Selecting columns from different tables will be described further in the Joins section.</p>
+  </section>
+  <section class='main-section' id='where_&_having'>
+    <header class='section-header'>Where & Having</header>
+    <p>Here is a good way to remember when to use WHERE and HAVING commands from GeeksForGeeks, "It is not a predefined rule but  in a good number of the SQL queries, we use WHERE prior to GROUP BY and HAVING after GROUP BY. The Where clause acts as a pre filter where as Having as a post filter."</p>
+    <h2>WHERE</h2>
+    <p>Sets the condition of the data that gets viewed based on what columns are selected. It is based on the data rows in a table. It CAN'T be used with aggregates.</p>
+    <code>SELECT (*column-names*) FROM (*table-name*) WHERE (*condition*);</code>
+    <h2>HAVING</h2>
+    <p>On the other hand, the HAVING command DOES work on aggregate data. The below example will use the SUM command which is one of the aggregate functions mentioned in the Aggregate Functions section.</p>
+    <code>SELECT (*column-name*), SUM(*column-name*) AS (*new-column-name*)FROM (*table-name*) GROUP BY (*column-name*);</code>
+  </section>
+  <section class='main-section' id='crud_operations'>
+    <header class='section-header'>CRUD Operations</header>
+    <p>CRUD stands for Create, Read, Update, and Delete. Some of these operations are part of DML(Data Manipulation Language)Commands</p>
+    <h2>CREATE</h2>
+    <p></p>
+    <code></code>
+    <h2>READ</h2>
+    <p></p>
+    <code></code>
+    <h2>UPDATE</h2>
+    <p>Keep in mind that the WHERE command is needed for this query to specify which value(s) needs to be changed. Otherwise the whole table will change!</p>
+    <code>UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;</code>
+    <h2>DELETE</h2>
+    <p>This operation will delete rows that exist. The WHERE operation is important otherwise the whole table will be lost!</p>
+    <code>DELETE FROM table_name WHERE condition;</code>
+    <h2>INSERT INTO</h2>
+    <p>This is used to add new values into an existing table. The values need to be in the same order as how the columns appear in the table from left to right.</p>
+    <code>
+      INSERT INTO (table-name) VALUES (value1, value2,...etc);
+    </code>
+  </section>
+  <section class='main-section' id='aggregation_functions'>
+    <header class='section-header'>Aggregation Functions</header>
+    <p>Aggregation is another word of clumping or grouping items together. In the case for SQL and other languages data values would be the items being grouped together. Aggregations functions for SQL are average, count, sum, minimum, and maximum. While reading through some of the other commands, there are some other commands that I think would fit into this category. Those commands are Group By and Order By.</p>
+      <h2>AVG</h2>
+    <p>Finds the average of a numerical column.</p>
+    <code>SELECT AVG(column_name)
+FROM table_name
+WHERE condition;</code>
+      <h2>COUNT</h2>
+    <p>Provides the quantity of the selected column.</p>
+    <code>SELECT COUNT(column_name)
+FROM table_name;</code>
+    <h2>SUM</h2>
+    <p>Returns the total of a numerical column.</p>
+    <code>SELECT SUM(column_name)
+FROM table_name
+WHERE condition;</code>
+    <h2>MIN</h2>
+    <p>Returns the lowest value of a numerical column.</p>
+    <code>SELECT MIN(column_name)
+FROM table_name
+WHERE condition; </code>
+    <h2>MAX</h2>
+    <p>Returns the highest value of a numerical column.</p>
+    <code>SELECT MAX(column_name)
+FROM table_name
+WHERE condition;</code>
+    <h2>GROUP BY</h2>
+    <p>This command groups rows that share the same values. It is also often combined with the aggregate functions mentioned right above.</p>
+     <code>SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s);</code>
+    <h2>ORDER BY</h2>
+    <p>Here's the syntax of ordering the data based off of one column...</p>
+    <code>SELECT * FROM (*table_name*) ORDER BY (*column_name*) ASC|DESC
+</code>
+    <p>And here's how it's done with muliple columns...</p>
+    <code>SELECT * FROM (*table_name*) ORDER BY (*column1*) ASC|DESC , (*column2*) ASC|DESC</code>
+  </section>
+  <section class='main-section' id='like,_in,_between,_any_&_all'>
+    <header class='section-header'>Like, In, Between, Any & All</header>
+    <p></p>
+    <h2>LIKE</h2>
+    <p>This operator is always used with WHERE.</p>
+    <code>SELECT (*columnN*)
+FROM (*table_name*)
+WHERE (*columnN*) LIKE (*'_' &/OR '%'*); </code>
+    <h2>IN</h2>
+    <p>There's two ways to use IN. Right below shows a selection of multiple values...</p>
+    <code>SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1, value2, ...);</code>
+    <p>This syntax for IN include additional SELECT commands.</p>
+    <code>SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (SELECT STATEMENT); </code>
+    <h2>BETWEEN</h2>
+    <p></p>
+    <code>
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2; </code>
+    <h2>ANY</h2>
+    <p></p>
+    <code>SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);</code>
+    <h2>ALL</h2>
+    <p>There's a couple of ways to use ALL. Right below is a syntax to use ALL with SELECT...</p>
+    <code>SELECT ALL column_name(s)
+FROM table_name
+WHERE condition;</code>
+    <p>this command can also be used with WHERE and HAVING commands like below...</p>
+    <code>SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ALL
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);</code>
+    <h2>AND</h2>
+    <p>This command is similar to conditional commands in other programs. It should be used when both values are true. Multiple AND commands can be added to query what's needed.</p>
+    <code>SELECT * FROM (*table_name*) WHERE (*condition1*) AND (*condition2*) AND ...;</code>
+    <p>The conditions that can be used with SQL are: =, <, <=, >=, and >. </p>
+    <h2>OR</h2>
+    <p>This command also works similar to conditional commands in other programs in which either value is true.</p>
+    <code>SELECT * FROM (*table_name*) WHERE (*condition1*) OR (*condition2*) OR...;</code>
+    <p>The AND/OR commands can also be combined like so...</p>
+    <code>SELECT * FROM (*table_name*) WHERE (*condition1*) AND (condition2 OR condition3);</code>
+    <h2>NOT</h2>
+    <p>For values that aren't needed or isn't true...</p>
+    <code>SELECT column1, column2, ...
+FROM table_name
+WHERE NOT condition;</code>
+  </section>
+  <section class='main-section' id='subqueries'>
+    <header class='section-header'>SubQueries</header>
+    <p></p>
+    <code></code>
+  </section>
+  <section class='main-section' id='joins_&_unions'>
+    <header class='section-header'>Joins & Unions</header>
+    <h2>Inner Join</h2>
+    <p>Joining two tables</p>
+    <code>SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;</code>
+    <p>Multiple tables can be joined together by repeating the join type and ON command.</p>
+    <h2>Right Join</h2>
+    <p></p>
+    <code>SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name = table2.column_name;</code>
+     <h2>Left Join</h2>
+    <p></p>
+    <code>SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;</code>
+    <h2>Self Join</h2>
+    <p></p>
+    <code>SELECT column_name(s)
+FROM table1 T1, table1 T2
+WHERE condition;</code>
+    <h2>UNION</h2>
+    <p>To get started with writing JavaScript, open the Scratchpad and write your first "Hello world" JavaScript code:</p>
+    <code>function greetMe(yourName) { alert("Hello " + yourName); } greetMe("World");</code>
+      <p>Select the code in the pad and hit Ctrl+R to watch it unfold in your browser!</p>
+  </section>
+  <section class='main-section' id='wildcards'>
+    <header class='section-header'>Wildcards</header>
+      <p></p>
+      <p></p>
+    <p></p>
+  </section>
+  <section class='main-section' id='erd'>
+    <header class='section-header'>ERD aka Entity Relationship Diagram</header>
+      <p>Click <a href='https://www.visual-paradigm.com/guide/data-modeling/what-is-entity-relationship-diagram/'>here </a>to get a better understanding of ERDs. Basically the purpose of creatig an ERD is to get a better understanding of the relationships of each table used to in order to make the best queries. Below is an image from the website above in order to show how a good ERD will look like.</p>
+    <div class='center-img'>
+      <img src='https://cdn-images.visual-paradigm.com/guide/data-modeling/what-is-erd/01-entity-relationship-diagram.png' alt='ERD example'></img>
+    </div>
+  </section>
+  
+  <section class='main-section' id='sqlalchemy:_here_we_go!'>
+    <header class='section-header'>SQLAlchemy: Here we go!</header>
+      <p>This was...tough. I understand it more when I read it but the <a href='#'>documentation</a> for it is...something else. I wondered what I was ready because it just wasn't clicking for me. It was just way over my head and it just wasn't beginner friendly. Bare with me as we go through this together.</p>
+  </section>
+  
+  <section class='main-section' id='doc._references'>
+    <header class='section-header'>Doc. References</header>
+      <p>More information will be added to this documentation as I learn more SQL but check out the links below in the meantime.</p>
+      <ul class='column-container'>
+        <li><a href='http://www.sqlfiddle.com/' target='_blank'>Online SQL IDE</a></li>
+        <li><a href='https://www.tutorialspoint.com/sql/sql-quick-guide.htm' target='_blank'>TutorialsPoint's SQL Quick Guide</a></li>
+        <li><a href='https://www.w3schools.com/sql/default.asp' target='_blank'>W3Schools' SQL Tutorials </a></li>
+        <li><a href='https://www.dofactory.com/sql' target='_blank'>DoFactory's SQL Tutorials</a></li>
+        <li><a href='https://www.geeksforgeeks.org/sql-tutorial/?ref=ghm' target='_blank'>GeeksForGeeks' SQL Tutorials</a></li>
+        <li><a href='https://sqlbolt.com/' target='_blank'>SQL Bolt's Interactive Tutorials</a></li>
+        <li><a href='https://sqlzoo.net/' target='_blank'>SQL Zoo's Interactive Tutorials</a></li>
+        <li><a href='https://pgexercises.com/' target='_blank'>PostgresSQL Exercises</a></li>
+        <li><a href='https://www.postgresqltutorial.com/' target='_blank'>PostgreSQL Tutorials</a></li>
+        <li><a href='http://studybyyourself.com/seminar/sql/course/?lang=en' target='_blank'>SQL Course</a></li>
+        <li><a href='https://docs.sqlalchemy.org/en/13/orm/tutorial.html' target='_blank'>SQLAlchemy Documentation</a></li>
+        <li><a href='https://overiq.com/flask-101/sqlalchemy-orm-basics/' target='_blank'>SQLAlchemy ORM Basics</a></li>
+        <li><a href='https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_quick_guide.htm' target='_blank'>TutorialsPoint SQLAlchemy Quick Guide</a></li>
+        <li><a href='https://pythonspot.com/orm-with-sqlalchemy/' target='_blank'>PythonSpot's ORM with SQLAlchemy</a></li>
+        <li><a href='https://leportella.com/sqlalchemy-tutorial/' target='_blank'>SQLAlchemy Basics Tutorial</a></li>
+        <li><a href='https://www.pythonsheets.com/notes/python-sqlalchemy.html' target='_blank'>PythonSheets' SQLAlchemy</a></li>
+        <li><a href='https://www.pythoncentral.io/introduction-to-sqlite-in-python/' target='_blank'>Intro to SQLite in Python</a></li>
+        <li><a href='https://www.pythoncentral.io/introduction-to-sqlite-in-python/' target='_blank'>ERD Designer</a></li>
+      </ul>
+      <p></p>
+  </section>
+<!--   <section class='footer'>
+    <div>Coded by TY - 2021</div>
+  </section> -->
+</main>
+  <section class='footer'>
+    <a href='https://www.freecodecamp.org/learn/responsive-web-design/' target='_blank'>*-* Project objective provided by FCC Responsive Web Design Course *-*</a>
+    <div>Coded by TY - 2021</div>
+  </section>
+  </body>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
